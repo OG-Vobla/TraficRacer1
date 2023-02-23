@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 210
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -1816,9 +1816,9 @@ TextureImporter:
       decor2_40: 319385372
       decor2_75: 565353370
       decor2_38: -1023785947
+      decor2_67: 1099627582
       decor2_49: -2078970083
       decor2_63: 174843197
-      decor2_67: 1099627582
       decor2_70: -1377960327
       decor2_59: -1367256412
       decor2_3: 173692853

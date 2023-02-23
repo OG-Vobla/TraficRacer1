@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - BotCar
+  - PlayerCar
+  - Desert
+  - GreenMap
+  - LoseZone
   layers:
   - Default
   - TransparentFX
@@ -11,8 +16,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - BotCar
   - 
   - 
   - 
@@ -40,4 +45,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Cars
+    uniqueID: 3889139419
+    locked: 0
+  - name: Ui
+    uniqueID: 3684505857
     locked: 0
