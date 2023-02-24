@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class PlayerControl : MonoBehaviour
 	[SerializeField] Transform GroundSpawn;
 	[SerializeField] Transform LoseWin;
 	[SerializeField] Transform PauseWin;
+	[SerializeField] Text PointsInLoseWin;
+	[SerializeField] Text Points;
+	[SerializeField] Text BonusText;
 	[SerializeField] Grid Ground;
 	[SerializeField] Grid Ground1;
 	[SerializeField] float speedX;
@@ -20,7 +24,7 @@ public class PlayerControl : MonoBehaviour
 	[SerializeField] List<Grid> TileMaps;
 	[SerializeField] List<Transform> Spawners;
 	static public bool isGame = true;
-	public int Points = 0;
+	public int points = 0;
 	public static float HorizontalMove = 0f;
 	public float tilt = 0f;
 	public float GroundLenght;
@@ -40,10 +44,12 @@ public class PlayerControl : MonoBehaviour
 	}
 	public void StartLevel()
 	{
+		BonusText.text = "";
+		Points.gameObject.SetActive(true);
 		WPress = false; 
 		SPress = false;
 		speedX = 3;
-		Points = 0;
+		points = 0;
 		tilt = 6;
 		speedY = 0.5f;
 		LoseWin.gameObject.SetActive(false);
@@ -51,25 +57,25 @@ public class PlayerControl : MonoBehaviour
 		gameObject.SetActive(true);
 		foreach (var i in Spawners)
 		{
-			if (i.GetChildCount() != 0)
+			if (i.childCount != 0)
 			{
-				for (int a = 0; a < i.GetChildCount() ; a++)
+				for (int a = 0; a < i.childCount ; a++)
 				{
 					Destroy(i.GetChild(a).gameObject);
 				}
 			}	
 			
 		}
-		if (Ground1Spawn.GetChildCount() != 0)
+		if (Ground1Spawn.childCount != 0)
 		{
-			for (int a = 0; a < Ground1Spawn.GetChildCount() ; a++)
+			for (int a = 0; a < Ground1Spawn.childCount ; a++)
 			{
 				Destroy(Ground1Spawn.GetChild(a).gameObject);
 			}
 		}
-		if (GroundSpawn.GetChildCount() != 0)
+		if (GroundSpawn.childCount != 0)
 		{
-			for (int a = 0; a < GroundSpawn.GetChildCount() ; a++)
+			for (int a = 0; a < GroundSpawn.childCount ; a++)
 			{
 				Destroy(GroundSpawn.GetChild(a).gameObject);
 			}
@@ -96,6 +102,7 @@ public class PlayerControl : MonoBehaviour
     {
 		if (isGame)
 		{
+			Points.text = points.ToString();
 			if (Input.GetKeyDown(KeyCode.Escape))
 			{
 				if (Time.timeScale == 0)
@@ -188,11 +195,18 @@ public class PlayerControl : MonoBehaviour
 			}
 			if (speedY < 3)
 			{
-				Points += 1;
+				BonusText.text = "";
+				points += 1;
+			}
+			else if (speedY > 7)
+			{
+				BonusText.text = "Бонус за высокую скорость + 3";
+				points += 5;
 			}
 			else
 			{
-				Points += 2;
+				BonusText.text = "";
+				points += 2;
 			}
 			yield return new WaitForSeconds(0.5f);
 		}
@@ -204,7 +218,11 @@ public class PlayerControl : MonoBehaviour
 		{
 			gameObject.SetActive(false);
 			LoseWin.gameObject.SetActive(true);
+			
 			isGame = false;
+			Points.gameObject.SetActive(false);
+			BonusText.text = "";
+			PointsInLoseWin.text = points.ToString();
 		}
 	}
 
