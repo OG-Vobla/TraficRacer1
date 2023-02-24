@@ -17,6 +17,7 @@ public class PlayerControl : MonoBehaviour
 	[SerializeField] Text PointsInLoseWin;
 	[SerializeField] Text Points;
 	[SerializeField] Text BonusText;
+	[SerializeField] Text SpeedBonusText;
 	[SerializeField] Grid Ground;
 	[SerializeField] Grid Ground1;
 	[SerializeField] float speedX;
@@ -44,6 +45,7 @@ public class PlayerControl : MonoBehaviour
 	}
 	public void StartLevel()
 	{
+		Time.timeScale = 1f;
 		BonusText.text = "";
 		Points.gameObject.SetActive(true);
 		WPress = false; 
@@ -211,19 +213,89 @@ public class PlayerControl : MonoBehaviour
 			yield return new WaitForSeconds(0.5f);
 		}
 	}
-	
+	public IEnumerator BonusPrint(string bonusText)
+	{
+		SpeedBonusText.text = bonusText;
+		yield return new WaitForSeconds(2f); 
+		SpeedBonusText.text = "";
+
+	}
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		if (collision.transform.GetChild(0).gameObject.tag == "LoseZone")
+		if (collision.transform.childCount == 0)
 		{
-			gameObject.SetActive(false);
-			LoseWin.gameObject.SetActive(true);
+			if (collision.gameObject.tag == "Wall")
+			{
+
+				speedY -= speedY / 100 * 20;
+			}
+		}
+		else
+		{
+			for (int i = 0; i < collision.transform.childCount; i++)
+			{
+				if (collision.transform.GetChild(i).gameObject.tag == "LoseZone")
+				{
+					gameObject.SetActive(false);
+					LoseWin.gameObject.SetActive(true);
+					isGame = false;
+					Points.gameObject.SetActive(false);
+					BonusText.text = "";
+					PointsInLoseWin.text = points.ToString();
+				}
+			}
 			
-			isGame = false;
-			Points.gameObject.SetActive(false);
-			BonusText.text = "";
-			PointsInLoseWin.text = points.ToString();
 		}
 	}
+	private void OnTriggerStay2D(Collider2D collision)
+	{
+		if (collision.transform.childCount == 0)
+		{
+			Debug.Log("sfdgdfgdfghf");
+			if (collision.gameObject.tag == "SpeedDown")
+			{
+				speedY -= speedY / 100 * 20;
+			}
+		}
+		else
+		{
+			Debug.Log("sfdgdfgdfghf");
+			for (int i = 0; i < collision.transform.childCount; i++)
+			{
+				if (collision.transform.GetChild(i).gameObject.tag == "BonusZone" && speedY > 5)
+				{
+					Debug.Log("sdfsdf");
+					points += 50;
+					StartCoroutine(BonusPrint("+50 за проезд в опасной близости на большой скорости"));
+				}
+			}
 
+		}
+
+	}
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		if (collision.transform.childCount == 0)
+		{
+		}
+		else
+		{
+			Debug.Log("sfdgdfgdfghf");
+			for (int i = 0; i < collision.transform.childCount; i++)
+			{
+				if (collision.transform.GetChild(i).gameObject.tag == "BonusZone" && speedY > 5)
+				{
+					Debug.Log("sdfsdf");
+					points += 50;
+					StartCoroutine(BonusPrint("+50 за проезд в опасной близости на большой скорости"));
+				}
+			}
+
+		}
+	}
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		Debug.Log("fgfdhh");
+
+	}
 }

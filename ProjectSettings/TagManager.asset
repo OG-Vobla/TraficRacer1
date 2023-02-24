@@ -9,6 +9,9 @@ TagManager:
   - Desert
   - GreenMap
   - LoseZone
+  - Wall
+  - SpeedDown
+  - BonusZone
   layers:
   - Default
   - TransparentFX
