@@ -19,11 +19,11 @@ public class DeleteZoneScript : MonoBehaviour
 	{
         
         Debug.Log("dsfg");
-        collision.transform.position = new Vector2(collision.transform.position.x,7.6f);
+        Destroy(collision.gameObject);
 	}
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
         Debug.Log("sdf");
-		collision.transform.position = new Vector2(collision.transform.position.x, 7.6f);
+		Destroy(collision.gameObject);
 	}
 }

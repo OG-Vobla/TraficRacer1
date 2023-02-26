@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.011460543, y: 0.005730316}
+  m_Offset: {x: 0.0011078268, y: -0.0024744868}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0152807, y: 0.453715}
+  m_Size: {x: 0.7550293, y: 0.3782308}
   m_EdgeRadius: 0
 --- !u!1 &6818175040524363947
 GameObject:
@@ -68,7 +68,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4461619803201555820}
   - component: {fileID: 5622925355370502015}
-  m_Layer: 7
+  - component: {fileID: 1828595429798135213}
+  m_Layer: 0
   m_Name: BonusZone
   m_TagString: BonusZone
   m_Icon: {fileID: 0}
@@ -116,6 +117,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.84338164}
   m_EdgeRadius: 0
+--- !u!114 &1828595429798135213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6818175040524363947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d34809a92935fe34fa473edff7bbccee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8466881853383823039
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,8 +140,8 @@ GameObject:
   - component: {fileID: 8466881853383823035}
   - component: {fileID: 8466881853383823036}
   - component: {fileID: 8466881853383823037}
-  - component: {fileID: 8466881853383823038}
   - component: {fileID: 2941756595103147778}
+  - component: {fileID: -5080972907021462186}
   m_Layer: 7
   m_Name: BotCarPrefab
   m_TagString: BotCar
@@ -231,7 +244,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.7722373, y: 0.47}
   m_EdgeRadius: 0
---- !u!50 &8466881853383823038
+--- !u!114 &2941756595103147778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8466881853383823039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f66bb41f29d6240a7f594f56285cbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedY: 0
+--- !u!50 &-5080972907021462186
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -252,16 +278,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!114 &2941756595103147778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8466881853383823039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7f66bb41f29d6240a7f594f56285cbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedY: 0

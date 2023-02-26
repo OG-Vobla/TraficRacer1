@@ -31,6 +31,7 @@ public class PlayerControl : MonoBehaviour
 	public float GroundLenght;
 	public bool WPress = false; 
 	public bool SPress = false;
+	static public bool BonusActive = false;
 	private void Start()
 	{
 		StartLevel();
@@ -171,7 +172,12 @@ public class PlayerControl : MonoBehaviour
 			Ground.transform.Translate(Vector2.down * speedY * Time.deltaTime);
 			Ground1.transform.Translate(Vector2.down * speedY * Time.deltaTime);
 			transform.position = new Vector2(Mathf.Clamp(transform.position.x + HorizontalMove * Time.deltaTime, LeftWall.position.x + transform.localScale.x / 1.8f, RightWall.position.x - transform.localScale.x / 1.8f), transform.position.y);
-
+			if (BonusActive)
+			{
+				BonusActive = false;
+				points += 50;
+				StartCoroutine(BonusPrint("+50 за проезд в опасной близости на большой скорости"));
+			}
 		}
 
 	}
@@ -216,7 +222,7 @@ public class PlayerControl : MonoBehaviour
 	public IEnumerator BonusPrint(string bonusText)
 	{
 		SpeedBonusText.text = bonusText;
-		yield return new WaitForSeconds(2f); 
+		yield return new WaitForSeconds(1f); 
 		SpeedBonusText.text = "";
 
 	}
@@ -241,6 +247,7 @@ public class PlayerControl : MonoBehaviour
 					isGame = false;
 					Points.gameObject.SetActive(false);
 					BonusText.text = "";
+					SpeedBonusText.text = "";
 					PointsInLoseWin.text = points.ToString();
 				}
 			}
@@ -251,7 +258,7 @@ public class PlayerControl : MonoBehaviour
 	{
 		if (collision.transform.childCount == 0)
 		{
-			Debug.Log("sfdgdfgdfghf");
+			Debug.Log(collision.transform.childCount);
 			if (collision.gameObject.tag == "SpeedDown")
 			{
 				speedY -= speedY / 100 * 20;
@@ -259,16 +266,7 @@ public class PlayerControl : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log("sfdgdfgdfghf");
-			for (int i = 0; i < collision.transform.childCount; i++)
-			{
-				if (collision.transform.GetChild(i).gameObject.tag == "BonusZone" && speedY > 5)
-				{
-					Debug.Log("sdfsdf");
-					points += 50;
-					StartCoroutine(BonusPrint("+50 за проезд в опасной близости на большой скорости"));
-				}
-			}
+
 
 		}
 
@@ -280,22 +278,21 @@ public class PlayerControl : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log("sfdgdfgdfghf");
-			for (int i = 0; i < collision.transform.childCount; i++)
-			{
-				if (collision.transform.GetChild(i).gameObject.tag == "BonusZone" && speedY > 5)
-				{
-					Debug.Log("sdfsdf");
-					points += 50;
-					StartCoroutine(BonusPrint("+50 за проезд в опасной близости на большой скорости"));
-				}
-			}
+
 
 		}
 	}
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		Debug.Log("fgfdhh");
+		Debug.Log(collision.transform.childCount);
+		if (collision.transform.childCount == 0)
+		{
+		}
+		else
+		{
+			
+
+		}
 
 	}
 }
