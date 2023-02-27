@@ -8,6 +8,7 @@ public class DataScript : MonoBehaviour
 {
 	public static string LevelName = "Desert";
 	[SerializeField] List<Sprite> Cars;
+	[SerializeField] List<string> CarNames;
 	[SerializeField] SpriteRenderer CarSkinTra;
 	[SerializeField] Transform SelectLevelTra;
 	[SerializeField] Transform SelectCarTra;

@@ -872,8 +872,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 446.4, y: 430}
-  m_SizeDelta: {x: 745.57, y: 65.03}
+  m_AnchoredPosition: {x: -60, y: 442}
+  m_SizeDelta: {x: 1439.73, y: 65.03}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &384445443
 MonoBehaviour:
@@ -952,7 +952,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 446.4, y: 495.57}
+  m_AnchoredPosition: {x: 287.08002, y: 507.57}
   m_SizeDelta: {x: 745.57, y: 65.03}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &386348754
@@ -1309,6 +1309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cars: []
+  CarNames: []
   CarSkinTra: {fileID: 0}
   SelectLevelTra: {fileID: 0}
   SelectCarTra: {fileID: 0}
@@ -1379,8 +1380,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 884, y: 467}
-  m_SizeDelta: {x: 129.63, y: 122.18}
+  m_AnchoredPosition: {x: 832.02, y: 467}
+  m_SizeDelta: {x: 233.59, y: 122.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &664579753
 MonoBehaviour:
@@ -2916,8 +2917,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 277, y: 0}
-  m_SizeDelta: {x: 129.63, y: 122.18}
+  m_AnchoredPosition: {x: 371.72, y: 0}
+  m_SizeDelta: {x: 319.06, y: 122.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1787068099
 GameObject:

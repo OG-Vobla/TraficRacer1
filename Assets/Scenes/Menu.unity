@@ -1642,6 +1642,7 @@ MonoBehaviour:
   - {fileID: 952467694, guid: 31bc7423c46db8b408eca22c1153e65f, type: 3}
   - {fileID: -659843167, guid: 31bc7423c46db8b408eca22c1153e65f, type: 3}
   - {fileID: 2066637129, guid: 31bc7423c46db8b408eca22c1153e65f, type: 3}
+  CarNames: []
   CarSkinTra: {fileID: 844254902}
   SelectLevelTra: {fileID: 1787321601}
   SelectCarTra: {fileID: 598437193}
