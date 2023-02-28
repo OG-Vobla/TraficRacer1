@@ -16,6 +16,7 @@ public class PlayerControl : MonoBehaviour
 	[SerializeField] Transform PauseWin;
 	[SerializeField] Text PointsInLoseWin;
 	[SerializeField] Text Points;
+	[SerializeField] Text Score;
 	[SerializeField] Text BonusText;
 	[SerializeField] Text SpeedBonusText;
 	[SerializeField] Grid Ground;
@@ -49,6 +50,7 @@ public class PlayerControl : MonoBehaviour
 	{
 		Time.timeScale = 1f;
 		isGame = true;
+		Score.text = PlayerPrefs.GetInt("Score").ToString();
 		BonusText.text = "";
 		Points.gameObject.SetActive(true);
 		WPress = false; 
@@ -124,6 +126,11 @@ public class PlayerControl : MonoBehaviour
 			HorizontalMove = Input.GetAxisRaw("Horizontal") * speedX;
 			transform.rotation = Quaternion.Euler(0, 0, HorizontalMove / speedX * -tilt + 90);
 			//transform.position  = new Vector2(transform.position.x , transform.position.y + speedY * Time.deltaTime);
+			if (points > PlayerPrefs.GetInt("Score"))
+			{
+				PlayerPrefs.SetInt("Score", points );
+				Score.text = PlayerPrefs.GetInt("Score").ToString();
+			}
 			if (Input.GetKeyDown(KeyCode.W))
 			{
 				WPress = true;
@@ -142,9 +149,13 @@ public class PlayerControl : MonoBehaviour
 			{
 				SPress = false;
 			}
-			if (speedY < 0.5f)
+			if (speedY < 1)
 			{
-				speedY = 0.5f;
+				speedY = 1;
+			}
+			if (speedY >=  DataScript.SelectingCar.MaxSpeed - DataScript.SelectingCar.MaxSpeed/100 * 70)
+			{
+				speedY = DataScript.SelectingCar.MaxSpeed - DataScript.SelectingCar.MaxSpeed / 100 * 70;
 			}
 			//Ground.position = new Vector2(Ground.position.x, Mathf.Repeat(-Time.time * speedY, GroundLenght));
 			if (Ground.transform.position.y < -40.3)
@@ -193,7 +204,7 @@ public class PlayerControl : MonoBehaviour
 		{
 			if (WPress)
 			{
-				speedY += 0.2f;
+				speedY += DataScript.SelectingCar.Speed;
 			}
 			else
 			{
@@ -251,6 +262,9 @@ public class PlayerControl : MonoBehaviour
 					BonusText.text = "";
 					SpeedBonusText.text = "";
 					PointsInLoseWin.text = points.ToString();
+					PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") +  points) ;
+
+					Debug.Log(PlayerPrefs.GetInt("Money").ToString());
 				}
 			}
 			

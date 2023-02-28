@@ -40,6 +40,13 @@ public class CarClass
 			return null;
 		}
 	}
+	static public void BuyCar(string name)
+	{
+		if (PlayerPrefs.HasKey(name + "Cost"))
+		{
+			PlayerPrefs.SetInt(name + "IsBuy", 0);
+		}
+	}
 	public string Name { get => name; set => name = value; }
 	public int Cost { get => cost; set => cost = value; }
 	public float MaxSpeed { get => maxSpeed; set => maxSpeed = value; }
