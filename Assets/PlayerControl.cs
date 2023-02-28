@@ -21,7 +21,7 @@ public class PlayerControl : MonoBehaviour
 	[SerializeField] Grid Ground;
 	[SerializeField] Grid Ground1;
 	[SerializeField] float speedX;
-	public static  float speedY;
+	[SerializeField]  public static  float speedY;
 	[SerializeField] List<Grid> TileMaps;
 	[SerializeField] List<Transform> Spawners;
 	static public bool isGame = true;
@@ -34,6 +34,7 @@ public class PlayerControl : MonoBehaviour
 	static public bool BonusActive = false;
 	private void Start()
 	{
+		Debug.Log("gdfgodijgjodghfi");
 		StartLevel();
 	}
 	// Update is called once per frame
@@ -47,6 +48,7 @@ public class PlayerControl : MonoBehaviour
 	public void StartLevel()
 	{
 		Time.timeScale = 1f;
+		isGame = true;
 		BonusText.text = "";
 		Points.gameObject.SetActive(true);
 		WPress = false; 
